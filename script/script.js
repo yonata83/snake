@@ -12,7 +12,7 @@ const cols = canvas.width / box;
 let snake = {
     width: [{ x: 10 * box, y: 10 * box, dir: 'RIGHT' }],
     direction: 'RIGHT',
-    speed: 100
+    speed: 200
 };
  //Snake look
 const snakeHeadImg = new Image();
