@@ -234,6 +234,48 @@ function handleGameOver() {
 function enableControls() {
     document.addEventListener('keydown', handleKeyControls);
   }
+
+//Mobile Controls
+document.body.addEventListener("touchmove", function (e) {
+  e.preventDefault();
+}, { passive: false });
+
+function enableTouchControls() {
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  document.addEventListener("touchstart", function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+  }, false);
+
+  document.addEventListener("touchend", function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipeGesture();
+  }, false);
+
+  function handleSwipeGesture() {
+      const dx = touchEndX - touchStartX;
+      const dy = touchEndY - touchStartY;
+
+      if (Math.abs(dx) > Math.abs(dy)) {
+          if (dx > 30 && snake.direction !== 'LEFT') {
+              snake.direction = 'RIGHT';
+          } else if (dx < -30 && snake.direction !== 'RIGHT') {
+              snake.direction = 'LEFT';
+          }
+      } else {
+          if (dy > 30 && snake.direction !== 'UP') {
+              snake.direction = 'DOWN';
+          } else if (dy < -30 && snake.direction !== 'DOWN') {
+              snake.direction = 'UP';
+          }
+      }
+  }
+}
   
   function handleKeyControls(event) {
     switch (event.key) {
@@ -273,6 +315,7 @@ function startGame() {
     document.getElementById("gameCanvas").style.display = "block";
     document.getElementById("scoreContainer").style.display = "inline-block";
     enableControls();
+    enableTouchControls()
     spawnFood();    
     game = setInterval(draw, snake.speed);
 }
