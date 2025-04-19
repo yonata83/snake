@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Snake Game</h1>
+        <p>Use the arrow keys to control the snake.</p>
+        <div id="nameEntry">
+            <input type="text" id="playerNameInput" placeholder="Enter your name" />
+            <button id="startGameBtn">Start Game</button>
+          </div>  
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="scoreContainer">
+        <p>Score: <span id="score">0</span></p>
+    </div>
+    <div id="highScoreOverlay" class="hidden">
+        <h2>Game Over!</h2>
+        <p>Your Score: <span id="finalScore">0</span></p>
+        <h3>Top 5 Scores:</h3>
+        <ol id="highScoresList"></ol>
+        <button id="playAgainBtn">Play Again</button>
+      </div>
+  </div>
+  <script src="script/script.js"></script>
+</body>
+</html>
