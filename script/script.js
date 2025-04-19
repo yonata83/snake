@@ -300,7 +300,7 @@ document.getElementById("playAgainBtn").addEventListener("click", () => {
     snake = {
         width: [{ x: 10 * box, y: 10 * box }],
         direction: 'RIGHT',
-        speed: 100
+        speed: 200
     };
     score = 0;
     document.getElementById("score").textContent = score;
